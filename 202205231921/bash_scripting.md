@@ -5,7 +5,7 @@
 * `sh <filename>.sh` running a sh file using the `shell` interpreter.
 * `bash <filename>.sh` running a sh file using the `bash` interpreter.
 * `which bash` where the bash interpreter is located.
-* `!#<path to interpreter>` tells the program to use the interpreter in a specific path. If you place this command in your script, you will be able to run the script with just `./<filename>.sh`
+* `#!<path to interpreter>` tells the program to use the interpreter in a specific path. If you place this command in your script, you will be able to run the script with just `./<filename>.sh`
 * `chmod +x <filename>.sh` give everyone executable permission
 * `VARIABLE=VALUE` create a variable, there can be no spaces in between
 * `$VARIABLE` to use a variable
