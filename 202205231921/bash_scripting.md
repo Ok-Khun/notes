@@ -94,3 +94,16 @@
   }
   ```
 * `=~` perfomrs reguar expression match
+* `cat <filename>` command for printing the content of a file
+* reading a `.csv` file data line by line
+  ```bash
+  cat filename.csv | while read  VAR1 VAR2
+  do
+    <STATEMENTS>
+  done
+  ```
+* `IFS` stands for "Internal Field Separator", view `IFS` with `declare -p IFS`
+* `IFS=','` set ','
+* `PSQL="psql -X --username=freecodecamp --dbname=students --no-align --tuples-only -c"` connect to postgres via bash, `-c` flag is for running a single line command and existing
+* `$($PSQL "<query_here>")` query postgres via bash
+* 

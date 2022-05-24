@@ -115,6 +115,11 @@ FULL JOIN table_1 ON junction_table.foreign_key_column = table_1.primary_key_col
 FULL JOIN table_2 ON junction_table.foreign_key_column = table_2.primary_key_column;
 ```
 
+Delete data from a table:
+```sql
+TRUNCATE TABLE_NAME;
+```
+
 
 
 
