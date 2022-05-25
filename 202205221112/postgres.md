@@ -120,6 +120,11 @@ Delete data from a table:
 TRUNCATE TABLE_NAME;
 ```
 
+Dump database into <name>.sql
+`
+pg_dump --clean --create --inserts --username=<username> <database > <name>.sql
+`
+
 
 
 
