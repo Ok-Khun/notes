@@ -8,6 +8,7 @@ See list of database:
 `
 \l
 `
+
 Create database:
 ```sql
 CREATE DATABASE database_name;
@@ -20,6 +21,7 @@ Display tables:
 `
 \d
 `
+
 Create a table in the database:
 ```sql
 CREATE TABLE table_name();
@@ -30,6 +32,7 @@ View more details of a table:
 `
 \d table_name
 `
+
 Add a column to table:
 ```sql
 ALTER TABLE table_name ADD COLUMN column_name DATATYPE;
@@ -83,12 +86,16 @@ View table in order (row):
 ```sql
 SELECT columns FROM table_name ORDER BY column_name;
 SELECT * FROM table_name ORDER BY column_name;
+SELECT * FROM table_name ORDER BY column_name ASC;
+SELECT * FROM table_name ORDER BY column_name DESC;
 ```
+
+Note: you can add `LIMIT <number>` add the end of the query to limit the amount of data you want to view.
+
 Set primary key:
 ```sql
 ALTER TABLE table_name ADD PRIMARY KEY(column_name);
 ALTER TABLE table_name ADD PRIMARY KEY(column1, column2);
-
 ```
 Drop constraint:
 You can find `constraint_name` with `\d table_name`.
@@ -124,9 +131,28 @@ Dump database into <name>.sql
 `
 pg_dump --clean --create --inserts --username=<username> <database > <name>.sql
 `
+Rebuild the database 
+`
+psql -U postgres < students.sql
+`
 
+Condition (Multiple)
+```SQL
+SELECT * FROM table_name WHERE <condition_1> AND (<condition_2> OR <condition_2>);
+```
 
+Finding pattern
+An underscore `_` in a pattern will return rows that have any character in that spot. eample: _name
+`%` means anything can be there
+```SQL
+SELECT * FROM table_name WHERE <column> LIKE '<pattern>';
+SELECT * FROM table_name WHERE <column> NOT LIKE '<pattern>';
+```
 
+Select the lowest value in a column
+```SQL
+SELECT MIN(col_name) FROM table_name;
+```
 
 
 
