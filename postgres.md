@@ -154,8 +154,36 @@ Select the lowest value in a column
 SELECT MIN(col_name) FROM table_name;
 ```
 
+Select the highest value in a column
+```SQL
+SELECT MAX(col_name) FROM table_name;
+```
 
+Sum values in a column
+```SQL
+SELECT SUM(col_name) FROM table_name;
+```
 
+Avg values in a column
+```SQL
+SELECT AVG(col_name) FROM table_name;
+```
 
+Nearest whole number `CEIL` and `FLOOR`
 
+Round up number `ROUND(<number_to_round>, <decimals_places>)`
+
+Count column `COUNT(<column>)`
+
+Unique values `DISTINCT(<column>)`
+
+Group values
+```SQL
+SELECT <column> FROM <table> GROUP BY <column>;
+```
+
+Having 
+```SQL
+SELECT <column> FROM <table> GROUP BY <column> HAVING <condition>
+```
 
