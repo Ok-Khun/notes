@@ -45,6 +45,13 @@ external // someone outside can call the function
 internal
 ```
 
+Payable
+```SOL
+payable
+msg.value // a global keyword to access value when someone is sending a token
+require(msg.value > 1e18, "Not enough ETH."); // 1e18 = 1 * 10 ** 18 (1 ETH)
+```
+
 Variable:
 
 `DataType Visibility VarName = Value;`
@@ -111,7 +118,7 @@ nameToNumbers[_name] = _number;
 
 Codes are compiled down to EVM (Ethereum Virtual Machine). Some EVM compatible blockchains are Avalanche, Fantom, Polygon meaning we can write our solidity code and deploy it to them.
 
-Create a contract from a contract
+Create a contract from a contract:
 ```SOL
 contract ContractFactory {
     ContractName public contract1;
@@ -121,9 +128,27 @@ contract ContractFactory {
 }
 ```
 
-Import a contract
+Import a contract:
 ```SOL
 import "./SimpleStorage.sol";
 ```
+Inheritance & Override:
+```SOL
+contract NewContract is OldContract{
+    // Code here
+    // you can override OldContract with 
+    // virtual override
+    // i.e overide for newcontract
+    // i.e virutal for oldcontract
+}
+```
 
-To interact with a contract, you need the contract address or abi (application binary interface)
+To interact with a contract, you need the contract address or abi (application binary interface). 
+Contracts can hold token like a wallet address.
+
+Chainlink & Oracle
+Access data outside of blockchain or do external computation by using decentralized oracle networks.
+
+Chainlink documentation: [click here](https://docs.chain.link/)
+Kovin testnet tokens request: [click here](https://faucets.chain.link/kovan)
+
