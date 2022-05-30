@@ -45,11 +45,16 @@ external // someone outside can call the function
 internal
 ```
 
-Payable
+Payable:
 ```SOL
 payable
 msg.value // a global keyword to access value when someone is sending a token
 require(msg.value > 1e18, "Not enough ETH."); // 1e18 = 1 * 10 ** 18 (1 ETH)
+```
+
+Address of sender:
+```SOL
+msg.sender
 ```
 
 Variable:
@@ -143,12 +148,133 @@ contract NewContract is OldContract{
 }
 ```
 
+For loop:
+```SOL
+for(uint256 index=0; index < array.length; index++){
+    // do something here
+}
+```
+
+Create an empty array:
+```SOL
+arr = new dataType[](0);
+// example:
+// arr = new address[](0);
+```
+
+Transfer from contract
+```SOL
+payable(msg.sender).transfer(address(this).balance); // if error revert the transaction
+payable(msg.sender).send(address(this).balance); // if error return a bool
+// this is the recommended way
+(bool callSuccess, bytes memory dataReturned) = payable(msg.sender).call{
+    value: address(this).balance
+}("");
+```
+
+Library:
+```SOL
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.7;
+library LibraryName {
+    // cant have any state variable
+    // all the functions need to be internet
+}
+```
+
+Import Library
+```SOL
+import "./LibraryName.sol"
+
+contract ContractName {
+    using LibraryName for dataType;
+    // code
+```
+
+Modifier:
+```SOL
+modifier onlyOwner {
+    require(msg.sender == owner, "Sender is not owner");
+    _;
+}
+function name() public onlyOwner{}
+```
+
+Const, Immutable
+variables that can't be changed.
+```sol
+uint256 public constant VARNAME = 1.0; // lowers the gas fees
+address public immutable i_owner = 0x...; // lowers the gas fees
+```
+
+Custome error
+```sol
+error NotOwner(); outside of contract
+if(msg.sender != i_owner) {
+    revert NotOwner(); // saves gas
+}
+```
+
+Recieve & Fallback:
+refer to the documentation
+```sol
+// triggered when it receives $ (can be 0) without invoking the contract's function
+receive() external payable {
+    // code here
+}
+// when it receives $ and data without invoking the contract's function
+fallback() external payable {
+    // code here
+}
+```
+
 To interact with a contract, you need the contract address or abi (application binary interface). 
 Contracts can hold token like a wallet address.
 
 Chainlink & Oracle
 Access data outside of blockchain or do external computation by using decentralized oracle networks.
 
+Features
+
 Chainlink documentation: [click here](https://docs.chain.link/)
 Kovin testnet tokens request: [click here](https://faucets.chain.link/kovan)
+
+Chainlink VRF (chainlik verifiable randomness function)
+Doc : [click here](https://docs.chain.link/docs/get-a-random-number/)
+
+Chainlink Keepers (decentralized event driven execution)
+i.e every event do something
+Doc : [click here](https://docs.chain.link/docs/chainlink-keepers/compatible-contracts/)
+
+End-to-end reliabilty
+make a http request etc.
+
+Getting current eth usd price:
+we need ABI, Address
+Chainlink Github: [click here](https://github.com/smartcontractkit/chainlink)
+Chainlink AggregatorV3Interface Github: [click here](https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol)
+
+Using AggregatorV3Interface:
+```SOL
+// Rinkeby address
+AggregatorV3Interface public priceFeed = AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);
+```
+
+Importing from Github:
+```SOL
+// same directory
+// import"./AggregatorV3Interface.sol";
+
+// GITHUB
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+```
+
+Importing from NPM:
+```
+https://www.npmjs.com/package/@chainlink/contracts
+npm i @chainlink/contracts
+```
+
+Safe Math Library:
+Link : [click here](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol)
 
