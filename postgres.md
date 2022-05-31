@@ -147,6 +147,13 @@ An underscore `_` in a pattern will return rows that have any character in that 
 ```SQL
 SELECT * FROM table_name WHERE <column> LIKE '<pattern>';
 SELECT * FROM table_name WHERE <column> NOT LIKE '<pattern>';
+SELECT * FROM table_name WHERE <column> ILIKE '<pattern>';  #case insensitive
+SELECT * FROM table_name WHERE <column> NOT ILIKE '<pattern>';  #case insensitive
+```
+
+Select a column with empty value
+```SQL
+SELECT * FROM table_name WHERE <column> IS NULL;
 ```
 
 Select the lowest value in a column
@@ -181,9 +188,41 @@ Group values
 ```SQL
 SELECT <column> FROM <table> GROUP BY <column>;
 ```
+with group by, we can use aggregate functions to it.
 
 Having 
 ```SQL
 SELECT <column> FROM <table> GROUP BY <column> HAVING <condition>
 ```
+The condition must be an aggregate function with a test example:
+```SQL
+HAVING COUNT(*) > 0;
+```
+
+Rename a column
+```SQL
+SELECT <col> AS <new_col_name>
+```
+
+Full join
+```SQL
+SELECT * FROM <table_1> FULL JOIN <table_2> ON <table_1>.<foreign_key_column> = <table_2>.<foreign_key_column>;
+```
+
+Left join
+```SQL
+SELECT * FROM <table_1> LEFT JOIN <table_2> ON <table_1>.<foreign_key_column> = <table_2>.<foreign_key_column>;
+```
+
+Rright join
+```SQL
+SELECT * FROM <table_1> RIGHT JOIN <table_2> ON <table_1>.<foreign_key_column> = <table_2>.<foreign_key_column>;
+```
+
+Inner join
+```SQL
+SELECT * FROM <table_1> Inner JOIN <table_2> ON <table_1>.<foreign_key_column> = <table_2>.<foreign_key_column>;
+```
+
+
 
