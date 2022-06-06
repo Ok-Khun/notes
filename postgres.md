@@ -41,6 +41,10 @@ Delete a column from the table:
 ```sql
 ALTER TABLE table_name DROP COLUMN column_name;
 ```
+Modify a column:
+```SQL
+ALTER TABLE table_name MODIFY COLUMN column_name <modification>;
+```
 Data type:
 ```sql
 NUMERIC(4,1) // four digits before the decimal and one digit after the decimal
