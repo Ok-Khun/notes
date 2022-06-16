@@ -17,13 +17,14 @@ image: file system snapshop + startup command
 
 Basic Command:
 `docker run hello-world`
-Docker Client -> Docker Server <-> Docker Hub
-Docker Server -> Creates a container and runs the hello-world program
+Docker Client -> Docker Server <-> Docker Hub 
+Docker Server -> Creates a container and runs the hello-world program 
 
 `docker version` - docker version
 `docker run <image name> <command>` - override
 example: `docker run busybox echo hi there`
          `docker run busybox ls`
+
 `ls` spits out folder solely for the container.
 `docker ps` - list all the running containers
 `docker ps --all` - list all the containers ever created
@@ -36,6 +37,7 @@ example: `docker run busybox echo hi there`
 `docker kill <container id>` - SIGKILL for immediately shutdown.
 `docker exec -it <container id> <command>` - to execute a docker container (running).
 example: `docker exec -it 4617a4e81d42 redis-cli`
+
 `-it` - -i & -t, -i attach terminal, -t show text in a formatted
 `docker exec -it <container id> sh` - open terminal
 `docker run -it <image name> sh`
